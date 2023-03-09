@@ -2,7 +2,7 @@
 <html lang="en" class="h-100">
 
 <head>
-    <title>App Name: A Coding Project By Jason Popejoy</title>
+    <title>FizzBuzz: A Coding Project By Jason Popejoy</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -25,7 +25,7 @@
     <nav class="navbar navbar-expand-md navbar-dark fixed-top">
         <div class="container-fluid">
             <a class="navbar-brand" href="#"><img src="/img/JPMark.jpg" class="d-inline-block align-text-top"
-                    alt="Jason Popejoy Logo" width="40" height="38"> Counteri</a>
+                    alt="Jason Popejoy Logo" width="40" height="38"> FizzBuzz</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
                 aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -42,7 +42,7 @@
                         <a class="nav-link" href="/code.html">The Code</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" target="_blank" href="https://github.com/jaspopejoy/Counteri.git">Git Repo</a>
+                        <a class="nav-link" target="_blank" href="https://github.com/jaspopejoy/fizzbuzz">Git Repo</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" target="_blank" href="https://jasons-old-portfolio.netlify.app/">About</a>
@@ -55,38 +55,96 @@
     <!-- Main Section -->
     <main class="flex-shrink-0">
         <div class="container mt-5">
-
-        </div>
-    </main>
-
-  <!-- Footer Section-->
-  <footer class="footer mt-auto py-3 sticky-footer">
-    <div class="container-fluid">
-        <div class="row row-cols-1 row-cols-lg-3 gy-2">
-            <div class="col order-last order-lg-first text-light">
-                <div><span class="text-muted">&copy;2023</span> Jason Popejoy | jaspopejoy@gmail.com</div>
-            </div>
-            <div class="col d-flex align-items-center justify-content-start justify-content-lg-center">
-                <img src="/img/JPLogo White.svg" alt="Jason Popejoy Logo" height="45">
-            </div>
-            <div class="col d-flex align-items-center justify-content-start justify-content-lg-end">
-                <div class="row">
-                    <div class="col social"><a href="https://www.linkedin.com/in/jason-popejoy/" target="_blank"><i class="fab fa-linkedin fa-2x"></i></a>
-                    </div>
-                    <div class="col social"><a href="https://github.com/jaspopejoy" target="_blank"><i class="fab fa-github fa-2x"></i></a>
+            <div class="row row-cols-1 row-cols-lg-2">
+                <div class="col col-lg-4 border-end border-2">
+                    <h1 class="display-5 fw-bold lh-1 mb-3">FizzBuzz: A Coding Project</h1>
+                    <h4 class="lead">When it counts you Fizz Buzz. A javascript coding exercise using loops. Write a
+                        program that prints the numbers from 1 to 100 and for multiples of '3' display
+                        "<strong>Fizz</strong>" instead of
+                        the number, and for multiples of '5' display "<strong>Buzz</strong>". If the number is a
+                        multiple of both,
+                        display "<strong>FizzBuzz</strong>".</h4>
+                    <h2 class="mt-5 border-bottom border-2">Instructions</h2>
+                    <p>Enter a Fizz and a Buzz value. Press the button and the values will appear.</p>
+                </div>
+                <div class="col-8">
+                    <div>
+                        <form class="row gy-2 gx-3">
+                            <div class="col">
+                                <label>Enter a Fizz Number</label>
+                                <input id="fizzValue" type="number" class="form-control" placeholder="Fizz Value"
+                                    Value="3" aria-label="fizzValue">
+                            </div>
+                            <div class="col">
+                                <label>Enter a Buzz Number</label>
+                                <input id="buzzValue" type="number" class="form-control" placeholder="Buzz Value"
+                                    Value="5" aria-label="buzzValue">
+                            </div>
+                            <div class="col-12 d-flex justify-content-end">
+                                <btton type="button" id="btnSubmit" class="btn btn-dark">Buz It</btton>
+                            </div>
+                        </form>
+                        <h2 class="mt-5 border-bottom border-2">Results</h2>
+                        <div class="table-responsive">
+                            <table class="table table-striped table-sm">
+                                <tbody id="results">
+                                    <!--Results Go Here-->
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</footer>
+    </main>
 
-        <!-- Bootstrap JS -->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+    <!-- Footer Section-->
+    <footer class="footer mt-auto py-3 sticky-footer">
+        <div class="container-fluid">
+            <div class="row row-cols-1 row-cols-lg-3 gy-2">
+                <div class="col order-last order-lg-first text-light">
+                    <div><span class="text-muted">&copy;2023</span> Jason Popejoy | jaspopejoy@gmail.com</div>
+                </div>
+                <div class="col d-flex align-items-center justify-content-start justify-content-lg-center">
+                    <img src="/img/JPLogo White.svg" alt="Jason Popejoy Logo" height="45">
+                </div>
+                <div class="col d-flex align-items-center justify-content-start justify-content-lg-end">
+                    <div class="row">
+                        <div class="col social"><a href="https://www.linkedin.com/in/jason-popejoy/" target="_blank"><i
+                                    class="fab fa-linkedin fa-2x"></i></a>
+                        </div>
+                        <div class="col social"><a href="https://twitter.com/jaspopejoy" target="_blank"><i
+                            class="fab fa-twitter fa-2x"></i></a>
+                        </div>
+                        <div class="col social"><a href="https://github.com/jaspopejoy/fizzbuzz" target="_blank"><i
+                                    class="fab fa-github fa-2x"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <template id="fbTemplate">
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </template>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous">
         </script>
 
-    <scrip src="/js/site.js"></scrip>
+    <script src="/js/site.js"></script>
+
+    <script>
+        document.getElementById("btnSubmit").addEventListener("click", getValues);
+    </script>
 
 </body>
 

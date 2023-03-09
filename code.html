@@ -2,7 +2,7 @@
 <html lang="en" class="h-100">
 
 <head>
-    <title>App Name: A Coding Project By Jason Popejoy</title>
+    <title>FizzBuzz: A Coding Project By Jason Popejoy</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -27,7 +27,7 @@
     <nav class="navbar navbar-expand-md navbar-dark fixed-top">
         <div class="container-fluid">
             <a class="navbar-brand" href="#"><img src="/img/JPMark.jpg" class="d-inline-block align-text-top"
-                    alt="Jason Popejoy Logo" width="40" height="38"> Counteri</a>
+                    alt="Jason Popejoy Logo" width="40" height="38"> FizzBuzz</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
                 aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -35,16 +35,16 @@
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav me-auto mb-2 mb-md-0">
                     <li class="nav-item">
-                        <a class="nav-link"" href="/index.html">Home</a>
+                        <a class="nav-link"" href=" /index.html">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/app.html">The App</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page"href="/code.html">The Code</a>
+                        <a class="nav-link active" aria-current="page" href="/code.html">The Code</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" target="_blank" href="https://github.com/jaspopejoy/Counteri.git">Git Repo</a>
+                        <a class="nav-link" target="_blank" href="https://github.com/jaspopejoy/fizzbuzz">Git Repo</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" target="_blank" href="https://jasons-old-portfolio.netlify.app/">About</a>
@@ -57,24 +57,190 @@
     <!-- Main Section -->
     <main class="flex-shrink-0">
         <div class="container py-5 px-5 mt-5">
-            <h2 class="border-1 border-bottom border-dark">The Code for APP NAME.</h2>
+            <h2 class="border-1 border-bottom border-dark">The Code for FizzBuzz.</h2>
             <div class="row row-cols-1 row-cols-lg-2">
                 <div class="col-lg-8">
-                    <pre class="line-numbers"><code class="language-javascript">
-                        // Call Hello World
-                        function helloworld{
-                            alert("hello world");
-                        }
-                    </code>
+                    <pre class="line-numbers">
+                        <code class="language-javascript">
+                            
+                            //get the fizz and buzz values from the user
+                            function getValues() {
+
+                                //get the user values from the document
+                                let fizzValue = document.getElementById("fizzValue").value;
+                                let buzzValue = document.getElementById("buzzValue").value;
+
+                                //parse for numbers
+                                fizzValue = parseInt(fizzValue);
+                                buzzValue = parseInt(buzzValue);
+
+                                //check to make sure they are integers
+                                if (Number.isInteger(fizzValue) && Number.isInteger(buzzValue)) {
+
+                                    //call fizzBuzz
+                                    let fbArray = fizzBuzzB(fizzValue, buzzValue);
+                                    //call displayData and write values to the screen
+                                    displayData(fbArray);
+                                } else {
+                                    alert("You must enter an integer!")
+                                }
+
+                            }
+
+                            //do fizzBuzz
+                            //traditional solve for FizzBuzz using a for loop
+                            function fizzBuzz(fizzValue, buzzValue) {
+
+                                let returnArray = [];
+
+                                //loop from 1 to 100
+                                for (let i = 1; i <= 100; i++) {
+
+                                    //check to see if value is divisible by 3 and 5
+                                    //check to see if divisible by buzz value (5)
+                                    //check to see if divisible by fizz value (3)
+                                    if (i % fizzValue == 0 && i % buzzValue == 0) {
+                                        returnArray.push('FizzBuzz');
+                                    } else if (i % fizzValue == 0) {
+                                        returnArray.push('Fizz');
+                                    } else if (i % buzzValue == 0) {
+                                        returnArray.push('Buzz');
+                                    } else {
+                                        returnArray.push(i);
+                                    }
+                                }
+                                return returnArray
+
+                            }
+
+                            // another way to solve for FizzBuzz using a switch
+                            function fizzBuzzB(fizzValue, buzzValue) {
+                                let returnArray = [];
+                                let Fizz = false;
+                                let Buzz = false;
+
+                                for (let i = 1; i <= 100; i++) {
+
+                                    Fizz = i % fizzValue == 0;
+                                    Buzz = i % buzzValue == 0;
+
+                                    switch (true){
+                                        case Fizz && Buzz: {
+                                            returnArray.push("FizzBuzz");
+                                            break;
+                                        }
+                                        case Fizz: {
+                                            returnArray.push("Fizz");
+                                            break;
+                                        }
+                                        case Buzz: {
+                                            returnArray.push("Buzz");
+                                            break;
+                                        }
+                                        default: {
+                                            returnArray.push(i);
+                                            break;
+                                        }
+                                    }
+                                }
+                                return returnArray
+                            }
+
+                            // return an array using a tienary operator
+                            function fizzBuzzC(fizzValue, buzzValue) {
+                                let returnArray = [];
+                                for (let i = 1; i<= 100; i++) {
+                                    let value = ((i % fizzValue == 0 ? 'Fizz' : '') + (i % buzzValue == 0 ? 'Buzz' : '') || i);
+                                    returnArray.push(value);
+                                }
+                                returnArray
+                            }
+
+                            //loop over array and create a tablerow for each item
+                            function displayData(fbArray) {
+
+                            //get the table body element from the page
+                            let tableBody = document.getElementById("results");
+
+                            //get the template row
+                            let templateRow = document.getElementById("fbTemplate");
+
+                                //clear the table first
+                                tableBody.innerHTML = "";
+
+                                for (let index = 0; index < fbArray.length; index+= 5) {
+                                    
+                                    let tableRow = document.importNode(templateRow.content,true);
+
+                                    // grab the tds to put into array
+                                    let rowCols = tableRow.querySelectorAll("td");
+
+                                    rowCols[0].classList.add(fbArray[index]);
+                                    rowCols[0].textContent = fbArray[index];
+                                
+                                    rowCols[1].classList.add(fbArray[index + 1]);
+                                    rowCols[1].textContent = fbArray[index + 1];
+
+                                    rowCols[2].classList.add(fbArray[index + 2]);
+                                    rowCols[2].textContent = fbArray[index + 2];
+
+                                    rowCols[3].classList.add(fbArray[index + 3]);
+                                    rowCols[3].textContent = fbArray[index + 3];
+
+                                    rowCols[4].classList.add(fbArray[index + 4]);
+                                    rowCols[4].textContent = fbArray[index + 4];
+                                    
+                                    tableBody.appendChild(tableRow);
+                                }
+                            }
+                        </code>
                     </pre>
                 </div>
                 <div class="col-lg-4">
-                    <p>The Code is structured in one function.</p>
-                    <h5>Hello World</h5>
-                    <p>Hello World is a function that displays a message of "Hello World".</p>
+                    <p>The Code is structured in Three functions.</p>
+                    <h5>getValues</h5>
+                    <p>getValues accepts(gets) the user input from the page using <strong>getElementById</strong> and
+                        stores that input in the <strong>fizzValue</strong> and <strong>BuzzValue</strong> variables.
+                        The values are then passed to the <strong>fizzBuzz</strong> function and stores the resulting
+                        array in the <strong>fbArray</strong> variable. This variable is then passed to the
+                        <strong>displayData</strong> function to be printed out to the user.
+                    </p>
+                    <h5>fizzBuzz</h5>
+                    <p>The fizzBuzz function is one of three ways to solve this challenge. This function starts by
+                        creating an empty array named <strong>fbArray</strong>. Then a
+                        for loop is used to cycle through the numbers from 1 to 100. An <strong>if statement</strong> is
+                        used to check if the number is a multiple of both numbers entered by the user. If they are,
+                        <strong>FizzBuzz</strong> is pushed into the array.
+                    </p>
+                    <p>Two <strong>else if</strong> statements are then used to check if the number is a multiple of the
+                        first value and pushes <strong>Fizz</strong>, or a multiple of the second value and pushes
+                        <strong>buzz</strong>. If the number is not a multiple of either value, an <strong>else</strong>
+                        statement pushes the number itself into the array.
+                    </p>
+                    <h5>fizzBuzzB</h5>
+                    <p>This is the second way to solve this challenge. fizzBuzzB begins by creating the array
+                        <strong>fbArray</strong>. The variables
+                        <strong>fizz</strong> and <strong>buzz</strong> are then set to false. A for loop is created to
+                        cycle throug the numbers from 1 to 100, and the numbers are evaluated against the fizzValue and
+                        buzzValue variables. A switch statement is then used to determine which statments are true using
+                        <strong>case</strong> clauses. The first clause checks the values of fizz and buzz to see if
+                        they both equal true. If so, FizzBuzz is pushed into the array. The second clause checks to see
+                        if Fizz equals true and the third if Buzz is true and pushes either fizz or buzz into the array.
+                        Finally, if all three cases equal false, the default will push a number into the array.
+                    </p>
+                    <h5>fizzBuzzC</h5>
+                    <p>The third way to solve this challenge is fizzBuzzC. FizzbuzzC uses a <strong>tienary operator</strong> to loop
+                        over the numbers 1 to 100 and evaluate if fizzValue and buzzValue are multiples of the numbers
+                        entered by the user.</p>
+                    <h5>displayData</h5>
+                    <p>The displayData function creates HTML to insert into a display table. By using a <strong>template
+                            element</strong> in the app.html table rows are created with a for loop. Using the
+                        <strong>importNode</strong> function and <strong>querySelectorAll</strong> we can create the
+                        HTML code with the template element. The <strong>classList</strong> and the
+                        <strong>textContent</strong> properties are chanved at the same time to create the tableRow HTML
+                        and assign a class that can be targeted by our CSS.
+                    </p>
                 </div>
-            </div>
-        </div>
     </main>
 
     <!-- Footer Section-->
@@ -89,9 +255,14 @@
                 </div>
                 <div class="col d-flex align-items-center justify-content-start justify-content-lg-end">
                     <div class="row">
-                        <div class="col social"><a href="https://www.linkedin.com/in/jason-popejoy/" target="_blank"><i class="fab fa-linkedin fa-2x"></i></a>
+                        <div class="col social"><a href="https://www.linkedin.com/in/jason-popejoy/" target="_blank"><i
+                                    class="fab fa-linkedin fa-2x"></i></a>
                         </div>
-                        <div class="col social"><a href="https://github.com/jaspopejoy" target="_blank"><i class="fab fa-github fa-2x"></i></a>
+                        <div class="col social"><a href="https://twitter.com/jaspopejoy" target="_blank"><i
+                                    class="fab fa-twitter fa-2x"></i></a>
+                        </div>
+                        <div class="col social"><a href="https://github.com/jaspopejoy/fizzbuzz" target="_blank"><i
+                                    class="fab fa-github fa-2x"></i></a>
                         </div>
                     </div>
                 </div>
